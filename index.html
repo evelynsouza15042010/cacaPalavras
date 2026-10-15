@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Word</title>
+    <meta name="description" content="Jogo casual diário de adivinhação de palavras com tema, streak e feedback visual." />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="brand" aria-label="Logo do jogo">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Daily Word</span>
+        </div>
+
+        <div class="tag" aria-label="MVP do jogo">
+          <span>
+            MVP
+            <small>Daily</small>
+            <small>Word</small>
+          </span>
+        </div>
+      </header>
+
+      <main class="hero">
+        <h1>Word<br />Challenge</h1>
+        <p class="subtitle">
+          Um desafio diário de palavras por tema. Descubra a palavra do dia em até 6 tentativas.
+        </p>
+      </main>
+
+      <section class="game-shell" aria-label="Jogo principal">
+        <div class="game-header">
+          <div class="status-left">
+            <span class="status-pill">DIÁRIO</span>
+          </div>
+          <div class="status-right">
+            <span class="status-pill secondary" id="streakPill">🔥 0</span>
+          </div>
+        </div>
+
+        <div class="meta-board">
+          <h2>Desafio do dia</h2>
+          <span class="attempt-indicator">6 tentativas</span>
+        </div>
+
+        <div class="game-card">
+          <div class="word-panel">
+            <div class="word-status">
+              <span class="theme-badge" id="themeBadge">Animais</span>
+              <span class="letters-count" id="lettersCount">5 letras</span>
+            </div>
+
+            <div id="letterGrid" class="letter-grid" aria-live="polite"></div>
+
+            <div id="banner" class="banner" aria-live="polite">
+              Adivinhe a palavra secreta em 6 tentativas.
+            </div>
+
+            <div id="keyboard" class="keyboard" aria-label="Teclado virtual"></div>
+
+            <div class="action-row">
+              <button id="actionButton" class="btn primary" type="button">Enviar</button>
+              <button id="secondaryButton" class="btn secondary" type="button">Dica</button>
+            </div>
+
+            <div class="stats-strip" aria-label="Estatísticas do jogador">
+              <div class="stat-box">
+                <strong id="currentStreak">0</strong>
+                <span>Streak</span>
+              </div>
+              <div class="stat-box">
+                <strong id="bestStreak">0</strong>
+                <span>Melhor</span>
+              </div>
+              <div class="stat-box">
+                <strong id="totalWins">0</strong>
+                <span>Vitórias</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="helper-row">
+        <button type="button" class="helper-btn" id="shareButton">Compartilhar</button>
+        <button type="button" class="helper-btn" id="resetButton">Resetar</button>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
