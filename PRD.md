@@ -1,330 +1,222 @@
-# PRD — Jogo Casual de Adivinhação de Palavras
+# PRD — Palavra Secreta
 
-## 1. Visão geral do produto
+**Versão:** 0.2
+**Data:** 2026-10-29
+**Status:** Rascunho para validação
+**Idioma:** Português brasileiro
 
-Produto: jogo casual diário de adivinhação de palavras
-Plataforma: web responsiva mobile-first
-Público: crianças e jovens
-Mecânica principal: desafio diário com palavras por tema
-Estratégia: foco em retenção diária e crescimento orgânico
-Monetização: sem monetização no MVP
+## 1. Visão do produto
 
-O produto é um jogo casual em que o jogador tenta descobrir uma palavra secreta em algumas tentativas. A experiência deve ser rápida, intuitiva e visualmente clara, com feedback imediato e ritual diário, para aumentar o hábito de retorno.
+Palavra Secreta é uma plataforma de jogos casuais de palavras.
+O jogador pode escolher diferentes modos de desafio, desde
+descobrir palavras letra por letra até resolver charadas.
 
-## 2. Problema a ser resolvido
+O objetivo é oferecer uma experiência divertida, acessível,
+rápida de aprender e adequada para sessões curtas.
 
-Jogos casuais de palavras têm grande potencial de engajamento, mas muitas experiências falham por causa de:
-- regras pouco claras
-- onboarding pesado
-- pouca clareza na mecânica
-- baixa recorrência
-- frustração por dificuldade excessiva
-- falta de rotina e ritual diário
+## 2. Público-alvo
 
-O produto resolve isso criando uma experiência:
-- simples e acessível
-- rápida de jogar
-- visualmente direta
-- organizada em temas
-- recorrente e reforçada por streak
+- Pessoas que gostam de palavras, enigmas e desafios.
+- Jogadores casuais de celular e computador.
+- Pessoas interessadas em vocabulário e raciocínio.
+- Jogadores que preferem partidas sem pressão de tempo.
 
-## 3. Objetivo do produto
+## 3. Modos de jogo
 
-Objetivo principal:
-- aumentar a recorrência diária e manter uma sequência (streak) de jogadas
+### 3.1. Termo — adivinhação por letras
 
-Objetivos secundários:
-- tornar o jogo acessível para crianças e jovens
-- ensinar palavras por tema de forma leve e divertida
-- criar sensação de progresso sem exigir cadastro
-- gerar crescimento orgânico por compartilhamento
+Inspirado na mecânica de jogos como Termo e Wordle.
 
-## 4. Público-alvo
+Regras:
+- O jogo escolhe uma palavra secreta.
+- O jogador tenta descobrir a palavra digitando outra palavra.
+- Cada tentativa deve possuir o número de letras exigido.
+- Após cada tentativa, o jogo informa quais letras estão:
+  - Na posição correta.
+  - Na palavra, mas em outra posição.
+  - Ausentes da palavra.
+- O jogador tem um número limitado de tentativas.
+- A rodada termina quando a palavra é descoberta ou as
+  tentativas acabam.
 
-Público principal:
-- crianças e jovens
-- faixa etária aproximada: 8 a 18 anos
-- usam celular e tablet com frequência
-- gostam de jogos simples e rápidos
-- respondem bem a feedback visual e desafios leves
+Requisitos:
+- Tratar letras maiúsculas e minúsculas como equivalentes.
+- Aceitar palavras em português brasileiro.
+- Tratar acentos de maneira consistente.
+- Não contar entradas inválidas como tentativas.
+- Explicar o significado das cores e oferecer indicadores textuais.
 
-Necessidades:
-- entender a regra rapidamente
-- gastar pouco tempo por partida
-- sentir progresso
-- receber retorno imediato
-- manter um ritual diário sem esforço
+### 3.2. Charadas
 
-## 5. Persona principal
+O jogador recebe uma pergunta ou enigma cuja resposta é uma palavra.
 
-Nome: Ana, 12 anos
+Regras:
+- Apresentar uma charada por rodada.
+- Permitir que o jogador digite uma resposta.
+- Ignorar espaços externos e diferenças entre maiúsculas
+  e minúsculas.
+- Permitir solicitar pistas adicionais.
+- Informar quando a resposta estiver correta.
+- Permitir revelar a resposta.
+- Oferecer outro desafio após o término.
 
-Perfil:
-- gosta de jogos rápidos e coloridos
-- usa o celular todos os dias
-- gosta de desafios e pequenas recompensas
-- se interessa por temas e novidades
-- gosta de compartilhar conquistas com amigos
+### 3.3. Palavra misteriosa
 
-Necessidades:
-- entender o jogo em segundos
-- sentir que está melhorando
-- encontrar palavras relacionadas a temas que lhe interessam
-- manter uma rotina divertida no dia a dia
+O jogador recebe pistas progressivas sobre uma palavra secreta.
 
-## 6. Proposta de valor
+Regras:
+- Apresentar uma pista inicial.
+- Permitir solicitar outras pistas.
+- Manter o histórico de palpites.
+- Encerrar a rodada quando o jogador acertar ou revelar
+  a resposta.
 
-O jogo oferece:
-- uma partida por dia
-- algumas tentativas para descobrir a palavra
-- feedback visual claro
-- sensação de aprendizagem incremental
-- ritual diário com sequência
-- temas interessantes por categoria
-- compartilhamento simples e leve
+Este modo não deve fingir que calcula proximidade semântica.
+Se essa funcionalidade for implementada futuramente, sua
+lógica deverá ser especificada e testada separadamente.
 
-## 7. Core loop do jogo
+### 3.4. Categorias — proposta futura
 
-1. Usuário entra na tela inicial
-2. Visualiza a categoria e a quantidade de letras
-3. Tenta adivinhar a palavra
-4. Recebe feedback por letra
-5. Ajusta a próxima tentativa
-6. Acerta ou esgota as tentativas
-7. Vê o resultado final
-8. Consulta estatísticas básicas
-9. Compartilha o resultado sem revelar a solução
+O jogador recebe um conjunto de palavras e precisa identificar
+relações ou agrupá-las por categorias.
 
-## 8. Regras do jogo
+Exemplos:
+- Animais.
+- Alimentos.
+- Objetos.
+- Natureza.
+- Cultura e entretenimento.
 
-- Uma palavra por dia por usuário
-- Palavra escolhida automaticamente pela data
-- Palavra possui tamanho fixo
-- O jogador tem até 6 tentativas
-- A palavra pertence a uma categoria temática
-- A categoria pode mudar todos os dias
-- As letras recebem feedback por cor:
-  - verde: correta e na posição correta
-  - amarelo: correta, mas em outra posição
-  - cinza: não existe na palavra
-- O jogo não revela a resposta antes do fim
-- O compartilhamento mostra apenas o resultado, sem expor a solução
+Este modo está planejado, mas não é obrigatório na primeira
+versão jogável.
 
-## 9. Estrutura das categorias
+## 4. Menu principal
 
-A lista de temas pode incluir:
-- animais
-- comida
-- ciência
-- esportes
-- natureza
-- objetos
-- profissões
-- escola
-- tecnologia
-- hobbies
+A tela inicial deve permitir escolher um modo de jogo.
 
-Para o MVP, a prioridade será:
-- animais
-- comida
-- ciência
-- esportes
+Cada modo deve possuir:
+- Nome.
+- Descrição curta.
+- Explicação das regras.
+- Botão para começar.
+- Indicação de dificuldade, quando aplicável.
 
-## 10. Funcionalidades do MVP
+O jogador deve poder retornar ao menu sem perder a clareza
+sobre o estado da partida.
 
-### 10.1 Tela inicial
-- nome do jogo
-- botão para iniciar
-- explicação curta de como funciona
-- indicação do tema do dia
+## 5. Objetivos
 
-### 10.2 Tela de partida
-- categoria do tema
-- número de letras
-- campo para inserir tentativas
-- feedback por tentativa
-- botão de envio
-- opção de voltar ao início
+- Oferecer diferentes experiências de adivinhação.
+- Tornar o início de uma partida simples.
+- Incentivar a descoberta de palavras.
+- Garantir uma experiência utilizável por teclado.
+- Funcionar em computadores e dispositivos móveis.
+- Permitir adicionar novos modos no futuro.
 
-### 10.3 Feedback visual
-- letras com status visuais
-- verde: correta e na posição correta
-- amarelo: correta, mas em outra posição
-- cinza: ausente
-- destaque claro para facilitar leitura
+## 6. Requisitos funcionais
 
-### 10.4 Tela de resultado
-- mensagem de vitória ou derrota
-- quantidade de tentativas usadas
-- palavra correta revelada ao final
-- botão para voltar à tela inicial ou aguardar o próximo dia
+RF-01 — Exibir o menu de modos de jogo.
 
-### 10.5 Estatísticas
-- streak atual
-- melhor streak
-- total de vitórias
-- total de partidas
-- última palavra resolvida
-- percentual de acerto
+RF-02 — Permitir iniciar uma partida em cada modo disponível.
 
-### 10.6 Compartilhamento
-- botão para copiar resultado
-- botão para compartilhar em redes sociais
-- mensagem sem revelar a solução
-- exemplo: “Acabei de jogar hoje e usei 4 tentativas!”
+RF-03 — Implementar o modo Termo com feedback por letra.
 
-## 11. Requisitos funcionais
+RF-04 — Implementar o modo de charadas com respostas digitadas.
 
-- O sistema deve gerar uma palavra do dia com base na data
-- O sistema deve associar a palavra a uma categoria
-- O sistema deve validar se a tentativa é uma palavra válida
-- O sistema deve calcular feedback por letra
-- O sistema deve limitar o número de tentativas
-- O sistema deve registrar o resultado da partida
-- O sistema deve manter sequência diária do usuário
-- O sistema deve armazenar histórico básico de jogadas
-- O sistema deve exibir estatísticas simples
-- O sistema deve permitir compartilhamento de resultado
-- O sistema deve funcionar em mobile e desktop responsivos
-- O sistema deve aceitar entrada por teclado e teclado virtual
-- O sistema deve usar palavras com nível adequado à faixa etária
+RF-05 — Implementar o modo Palavra Misteriosa com pistas.
 
-## 12. Requisitos não funcionais
+RF-06 — Validar entradas vazias e inválidas.
 
-- interface clara e de leitura simples
-- carregamento rápido
-- layout responsivo
-- boa legibilidade em telas pequenas
-- alta acessibilidade visual
-- baixo consumo de dados
-- sem necessidade de cadastro obrigatório
-- desempenho consistente em navegadores modernos
-- suporte básico para acessibilidade visual:
-  - contraste adequado
-  - fontes legíveis
-  - botões grandes
+RF-07 — Impedir que entradas repetidas sejam contabilizadas
+indevidamente.
 
-## 13. Regras de negócio
+RF-08 — Informar vitória, derrota ou revelação da resposta.
 
-- a palavra do dia é a mesma para todos os usuários daquela data
-- a palavra deve estar no banco de palavras permitidas
-- as palavras escolhidas devem atender ao tema do dia
-- o usuário não pode repetir uma tentativa já feita
-- palavras inválidas devem gerar aviso claro
-- o sistema deve registrar a partida do dia como concluída ou não
-- o sistema deve atualizar o streak quando o usuário joga e retorna no dia seguinte
-- o sistema deve respeitar a lógica de “um jogo por dia” no MVP
+RF-09 — Permitir reiniciar uma rodada.
 
-## 14. Fluxo principal do usuário
+RF-10 — Permitir retornar ao menu principal.
 
-Fluxo principal:
-1. abrir o jogo
-2. ver a categoria e a quantidade de letras
-3. inserir a primeira tentativa
-4. receber feedback
-5. ajustar a próxima tentativa
-6. repetir até resolver
-7. confirmar resultado
-8. ver estatísticas
-9. compartilhar
+RF-11 — Adaptar o layout a telas pequenas e grandes.
 
-## 15. Histórias de usuário
+RF-12 — Oferecer feedback textual além de cores.
 
-- Como jogador casual, quero entender a regra em poucos segundos para começar sem esforço.
-- Como usuário, quero receber feedback visual por letra para saber como me aproximar da resposta.
-- Como usuário jovem, quero ter temas divertidos para me interessar em jogar todos os dias.
-- Como jogador, quero ver meu progresso para sentir que estou melhorando.
-- Como usuário, quero compartilhar meu resultado sem expor a resposta para incentivar outros a jogar.
-- Como jogador, quero continuar minha sequência diária para manter o hábito.
+RF-13 — Permitir navegar usando teclado.
 
-## 16. Critérios de aceitação
+RF-14 — Manter os dados do jogo separados da apresentação.
 
-- A tela inicial deve carregar em menos de 2 segundos em rede estável
-- O tutorial deve caber em até 2 frases curtas
-- O jogo deve permitir ao menos 6 tentativas
-- A palavra deve ser validada antes de confirmar
-- O feedback deve ser exibido imediatamente após a tentativa
-- O resultado deve aparecer sem atraso
-- O sistema deve manter o streak do usuário em base diária
-- O resultado compartilhado não deve revelar a solução
-- A experiência deve funcionar em celular com largura pequena
+## 7. Requisitos não funcionais
 
-## 17. Métricas de sucesso
+RNF-01 — Não exigir cadastro.
 
-Principais métricas:
-- retenção em 1 dia
-- retenção em 3 dias
-- retenção em 7 dias
-- taxa de conclusão da partida
-- taxa de vitória
-- média de tentativas por partida
-- tempo médio de sessão
-- streak médio
-- número de compartilhamentos
-- taxa de retorno no dia seguinte
+RNF-02 — Não exigir conexão de rede para os modos locais.
 
-Métricas de qualidade:
-- taxa de tentativa inválida
-- taxa de abandono na primeira tela
-- taxa de erro de entendimento da mecânica
-- tempo até a primeira jogada
+RNF-03 — Utilizar HTML semântico.
 
-## 18. Riscos e desafios
+RNF-04 — Apresentar foco de teclado visível.
 
-- palavras muito difíceis para a faixa etária
-- excesso de frustração em alguns temas
-- baixa retenção se o ritual diário não ficar claro
-- pouca variedade se as categorias forem reduzidas demais
-- compartilhamento sem engajamento real
-- dificuldade de destacar o jogo em um mercado competitivo
+RNF-05 — Respeitar a preferência por movimento reduzido.
 
-## 19. Escopo do MVP
+RNF-06 — Evitar dependências externas obrigatórias.
 
-O MVP deve incluir:
-- palavra do dia
-- categoria temática
-- até 6 tentativas
-- feedback por letras
-- tela de resultado
-- streak simples
-- estatísticas básicas
-- compartilhamento
-- layout mobile-first
-- sem cadastro obrigatório
-- sem monetização
+RNF-07 — Não coletar dados pessoais na versão inicial.
 
-## 20. O que não entra no MVP
+RNF-08 — Manter código legível e modular.
 
-- ranking global
-- multiplayer
-- compras internas
-- assinatura
-- sistema de avatar avançado
-- temas muito complexos
-- tutorial longo
-- sistema de recompensas pesado
+## 8. Escopo da primeira versão
 
-## 21. Roadmap sugerido
+Incluído:
+- Menu principal.
+- Modo Termo.
+- Modo Charadas.
+- Modo Palavra Misteriosa.
+- Seleção de tema visual.
+- Interface responsiva.
+- Feedback de acerto e erro.
+- Botões para reiniciar e retornar ao menu.
+- Documentação técnica.
 
-### MVP
-- palavra do dia por tema
-- feedback por letras
-- streak diário
-- estatísticas básicas
-- compartilhamento simples
+Fora do escopo inicial:
+- Multiplayer.
+- Contas de usuário.
+- Ranking online.
+- Sincronização entre dispositivos.
+- Monetização.
+- Inteligência artificial para criar charadas.
+- Classificação semântica avançada.
+- Aplicativo nativo para celular.
 
-### Próxima fase
-- mais categorias
-- mais palavras por tema
-- dificuldade personalizada
-- histórico detalhado
-- desafios semanais
-- elementos sociais leves
+## 9. Critérios de aceitação
 
-## 22. Definição final do produto
+- O jogador consegue selecionar um modo pelo menu.
+- O Termo compara as letras nas posições corretas.
+- Letras repetidas são avaliadas de forma consistente.
+- As charadas aceitam respostas válidas.
+- O modo Palavra Misteriosa oferece pistas progressivas.
+- Entradas vazias não avançam a rodada.
+- O jogador pode revelar respostas quando permitido.
+- Os estados de vitória e derrota são comunicados.
+- É possível retornar ao menu.
+- Os controles funcionam por teclado.
+- A interface é utilizável em telas pequenas.
 
-Produto: jogo casual diário de adivinhação de palavras para público jovem, com temas e ritual diário, pensado para web mobile-first, sem monetização no MVP, com foco em retenção orgânica.
+## 10. Decisões pendentes
 
-## 23. Conclusão
+1. O Termo terá palavras de quatro, cinco ou seis letras?
+2. Deve existir um desafio diário e outro modo ilimitado?
+3. O jogador poderá escolher a dificuldade?
+4. As charadas serão separadas por categorias?
+5. Devem existir pontuação, estatísticas e sequência de vitórias?
+6. O progresso deve ser salvo no navegador?
+7. O jogo terá modo escuro?
+8. Qual identidade visual deve ser adotada definitivamente?
 
-Este PRD estabelece uma base sólida para o desenvolvimento do jogo, priorizando simplicidade, aprendizado leve, feedback visual claro e recorrência diária. O MVP é focado em oferecer uma experiência acessível e habit-forming, com grande potencial de expansão em futuras versões.
+## 11. Referências
+
+- Termo: https://term.ooo/
+- Wordle: https://www.nytimes.com/games/wordle/index.html
+- Connections: https://www.nytimes.com/games/connections
+- Contexto: https://www.contexto.us.com/pt/como-jogar
+- WCAG: https://www.w3.org/TR/WCAG22/
+
+A análise dessas referências serve para estudar mecânicas,
+não para copiar identidade visual, conteúdo ou código.
